@@ -102,6 +102,16 @@ class BST {
     };
     this.root = removeNode(this.root, data);
   }
+
+  /* Traversing */
+  findMinHeight(node = this.root) {
+    if (node === null) return -1;
+    let left = this.findMinHeight(node.left);
+    let right = this.findMinHeight(node.right);
+    
+    if (left < right) return left + 1;
+    else return right + 1;
+  }
 }
 
 const bst = new BST();
@@ -112,4 +122,4 @@ bst.add(4);
 bst.add(3);
 bst.add(7);
 // bst.remove(7);
-console.log("Find : ", bst.root);
+console.log("Find : ", bst.findMinHeight());
